@@ -2,8 +2,6 @@ name: Deploy Wallet application
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ "branchname" ]
 
 permissions:
   contents: read
@@ -36,5 +34,5 @@ jobs:
             username: ${{ secrets.SFTP_USER }}
             password: ${{ secrets.SFTP_PASSWORD }}
             port:  ${{ secrets.SFTP_PORT }}
-            script: docker exec budgetcontrol-ms-name composer install
+            script: docker exec budgetcontrol-ms-notification composer install
   
