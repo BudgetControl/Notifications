@@ -17,6 +17,7 @@ class NotificationController extends Controller {
         $to = $body['to'];
         $subject = $body['subject'];
         $message = $body['message'];
+        $username = $body['user_name'];
 
         if(!isset($to) || empty($to)) {
             return response(['error' => 'Recipient email is required'], 400);
@@ -25,7 +26,7 @@ class NotificationController extends Controller {
         $view = new ContactView();
         $view->setMessageBody($message);
         $view->setUserEmail($to);
-        $view->setUserName("User Test");
+        $view->setUserName($username);
 
         try {
         Mailer::send($to, $subject, $view);

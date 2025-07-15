@@ -1,22 +1,22 @@
-service: budgetcontrol-ms-entries
+service: budgetcontrol-ms-notifications
 provider:
   name: aws
   region: eu-west-1
-  timeout: 60
+  timeout: 30
   runtime: provided.al2
   environment:
     APP_NAME: ${env:APP_NAME}
     APP_ENV: ${env:APP_ENV}
-    APP_VERSION: ${env:APP_VERSION}
-    APP_KEY: ${env:APP_KEY}
-    DB_CONNECTION: ${env:DB_CONNECTION}
-    DB_HOST: ${env:DB_HOST}
-    DB_DATABASE: ${env:DB_DATABASE}
-    DB_PORT: ${env:DB_PORT}
-    DB_USERNAME: ${env:DB_USERNAME}
-    DB_PASSWORD: ${env:DB_PASSWORD}
     LOGTAIL_API_KEY: ${env:LOGTAIL_API_KEY, ''}
     LOG_CHANNEL: ${env:LOG_CHANNEL}
+    SECRET_KEY: ${env:SECRET_KEY}
+    MAIL_DRIVER: ${env:MAIL_DRIVER}
+    MAIL_HOST: ${env:MAIL_HOST, ''}
+    MAIL_PORT: ${env:MAIL_PORT, ''}
+    MAIL_USERNAME: ${env:MAIL_USERNAME, ''}
+    MAIL_PASSWORD: ${env:MAIL_PASSWORD, ''}
+    MAIL_ENCRYPTION: ${env:MAIL_ENCRYPTION, ''}
+    MAIL_FROM_ADDRESS: ${env:MAIL_FROM_ADDRESS, ''}
   deploymentBucket:
     name: serverless-framework-deployments-eu-west-1-41d5edce-535f
 plugins:
@@ -24,7 +24,7 @@ plugins:
 functions:
   web:
     handler: public/index.php
-    timeout: 60
+    timeout: 30
     layers:
       - arn:aws:lambda:eu-west-1:534081306603:layer:php-82-fpm:99
     events:

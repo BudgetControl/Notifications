@@ -4,13 +4,14 @@ services:
     bemodule:
       container_name: budgetcontrol-ms-notifications
       image: mlabfactory/php8-apache:v1.2.3-xdebug
+      platform: linux/amd64
       volumes:
         - ./:/var/www/workdir
       networks:
         - budgetcontrol_network
       restart: unless-stopped
       ports:
-        - "8091:80"
+        - "8093:80"
 
 networks:
   budgetcontrol_network:

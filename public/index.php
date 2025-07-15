@@ -1,6 +1,16 @@
 <?php
 
+use Illuminate\Support\Facades\Log;
+
 require_once __DIR__ . "/../bootstrap/app.php";
+
+if (($_SERVER['HTTP_X_API_SECRET'] !== env('SECRET_KEY')) && env('APP_ENV') !== 'testing') {
+    http_response_code(403);
+    Log::warning('Access denied for IP: ' . $_SERVER['REMOTE_ADDR'] . ' - Invalid API secret');
+    echo 'Access Denied - You are not allowed to access this resource.';
+    exit;
+}
+
 
 $app = \Slim\Factory\AppFactory::create();
 

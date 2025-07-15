@@ -35,7 +35,7 @@
         "illuminate/filesystem": "^11.0",
         "nesbot/carbon": "^3.2",
         "logtail/monolog-logtail": "^3.1",
-        "budgetcontrol/mailer": "dev-main",
+        "budgetcontrol/mailer": "~v1.1-RC",
         "bref/bref": "~2.4.1"
     },
     "require-dev": {
@@ -60,5 +60,5 @@
             "email": "marco.defelice@mlabfactory.it"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "RC"
 }
