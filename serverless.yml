@@ -2,7 +2,6 @@ service: budgetcontrol-ms-notifications
 provider:
   name: aws
   region: eu-west-1
-  timeout: 30
   runtime: provided.al2
   environment:
     APP_NAME: ${env:APP_NAME}
@@ -24,7 +23,6 @@ plugins:
 functions:
   web:
     handler: public/index.php
-    timeout: 30
     layers:
       - arn:aws:lambda:eu-west-1:534081306603:layer:php-82-fpm:99
     events:
