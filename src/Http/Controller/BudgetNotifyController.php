@@ -23,19 +23,12 @@ class BudgetNotifyController extends Controller {
         if(!isset($to) || empty($to)) {
             return response(['error' => 'Recipient email is required'], 400);
         }
-
-        $subject = 'Budget Exceeded Alert - ' . $budgetName;
-        $message = "Dear User,\n\n";
-        $message .= "Your budget '{$budgetName}' has exceeded its limit.\n\n";
-        $message .= "Current spending: {$currentAmount} {$currency}\n";
-        $message .= "Budget limit: {$budgetLimit} {$currency}\n\n";
-        $message .= "Please review your expenses and consider adjusting your budget or spending habits.\n\n";
-        $message .= "Best regards,\nBudget Control Team";
+        $subject = 'Avviso Superamento Budget - ' . $budgetName;
 
         $view = new BudgetExceededView();
         $view->setUserEmail($to);
         $view->setUserName($username);
-        $view->setMessage($message);
+        $view->setMessage($budgetName);
         $view->setTotalSpent((float) $currentAmount);
         $view->setBudgetAmount((float) $budgetLimit);
         $view->setSpentPercentage((string)((float) $currentAmount / (float) $budgetLimit * 100));
