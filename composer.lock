@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa74a85f8dc021f064e6859237ab2f1c",
+    "content-hash": "5a4827a0df3dfc80736b6a65db690c94",
     "packages": [
         {
             "name": "bref/bref",
@@ -147,16 +147,16 @@
         },
         {
             "name": "budgetcontrol/mailer",
-            "version": "v1.0.1-RC",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/BudgetControl/MailerService.git",
-                "reference": "37c22721ca4864f343c68a0d25831e9924c5a97e"
+                "reference": "c38c9ad062ced65e1cd5a76c072412b03e7fb3a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BudgetControl/MailerService/zipball/37c22721ca4864f343c68a0d25831e9924c5a97e",
-                "reference": "37c22721ca4864f343c68a0d25831e9924c5a97e",
+                "url": "https://api.github.com/repos/BudgetControl/MailerService/zipball/c38c9ad062ced65e1cd5a76c072412b03e7fb3a7",
+                "reference": "c38c9ad062ced65e1cd5a76c072412b03e7fb3a7",
                 "shasum": ""
             },
             "require": {
@@ -187,9 +187,9 @@
             ],
             "description": "The MailerService library provides functionality for sending emails. It is used by the BC (Business Communication) module of the application.",
             "support": {
-                "source": "https://github.com/BudgetControl/MailerService/tree/v1.0.1-RC"
+                "source": "https://github.com/BudgetControl/MailerService/tree/v1.0.2"
             },
-            "time": "2025-07-15T10:46:30+00:00"
+            "time": "2025-07-16T10:47:23+00:00"
         },
         {
             "name": "cakephp/chronos",
@@ -8101,7 +8101,6 @@
     "aliases": [],
     "minimum-stability": "RC",
     "stability-flags": {
-        "budgetcontrol/mailer": 5,
         "mlabfactory/phpunit-self-api-integration": 10
     },
     "prefer-stable": false,
