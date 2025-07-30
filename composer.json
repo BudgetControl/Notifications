@@ -14,6 +14,14 @@
         "budgetcontrol/mailer": {
             "type":"vcs",
             "url":"git@github.com:BudgetControl/MailerService.git"
+        },
+        "budgetcontrol/library" : {
+            "type":"vcs",
+            "url":"https://github.com/BudgetControl/Library.git"
+        },
+        "budgetcontrol/cryptable" : {
+            "type":"vcs",
+            "url":"git@github.com:BudgetControl/LibsCryptable.git"
         }
     },
     "require": {
@@ -36,7 +44,10 @@
         "nesbot/carbon": "^3.2",
         "logtail/monolog-logtail": "^3.1",
         "budgetcontrol/mailer": "~v1.0.2",
-        "bref/bref": "~2.4.1"
+        "bref/bref": "~2.4.1",
+        "kreait/firebase-php": "^7.21",
+        "budgetcontrol/library": "~v1.4.5",
+        "php-di/php-di": "^7.0"
     },
     "require-dev": {
         "nikic/php-parser": "^5.0",
