@@ -3,8 +3,13 @@
 namespace BudgetControl\Notifications\Repositories;
 
 use Budgetcontrol\Library\Model\FcmToken;
+use BudgetControl\Notifications\Traits\BuildQuery;
+use BudgetControl\Notifications\Entities\FcmOptions;
+use BudgetControl\Notifications\Entities\OptionInterface;
 
 class FcmTokenRepository {
+
+    use BuildQuery;
 
     protected $tokens = [];
 
@@ -14,12 +19,14 @@ class FcmTokenRepository {
      * @param int $userId The ID of the user to associate with the token.
      * @param string $token The FCM token to be saved.
      * @param string $userAgent The user agent string of the device.
+     * @param string $lang The language preference of the user.
      *
      * @return void
      */
-    public function saveToken(int $userId, string $token, string $userAgent): void {
+    public function saveToken(int $userId, string $token, string $userAgent, string $lang): void {
 
         //check if exist 
+        $platform = platform($userAgent);
         $existingToken = FcmToken::where('user_id', $userId)->where('token', $token)->first();
 
         if ($existingToken) {
@@ -30,7 +37,27 @@ class FcmTokenRepository {
             'user_id' => $userId,
             'token' => $token,
             'device_info' => $userAgent,
+            'platform' => $platform,
+            'lang' => $lang
         ]);
+
+    }
+
+    /**
+     * Retrieves the FCM tokens for users based on the provided options.
+     *
+     * @param OptionInterface $options The options used to filter and retrieve user tokens.
+     * @return array An array of FCM tokens for the selected users.
+     */
+    public function getUsersToken(OptionInterface $options): array {
+
+        $conditions = $this->buildWhereCondition($options);
+
+        $tokens = FcmToken::where($conditions)
+            ->pluck('token')
+            ->toArray();
+
+        return array_unique($tokens);
 
     }
 
