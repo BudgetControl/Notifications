@@ -41,4 +41,37 @@ class WorkspaceNotifyControllerTest extends BaseCase
 
         $this->invokeMailhog($testData);
     }
+
+    public function test_workspace_un_share_email()
+    {
+        $request = $this->createMock(ServerRequestInterface::class);
+        $response = $this->createMock(ResponseInterface::class);
+
+        $queryParams = [
+            'to' => 'user@example.com',
+            'workspace_name' => 'Team Budget',
+            'shared_by' => 'John Doe',
+            'role' => 'editor',
+        ];
+
+        $request->method('getParsedBody')->willReturn($queryParams);
+        $controller = new WorkspaceNotifyController();
+
+        /** @var \Psr\Http\Message\ServerRequestInterface $request */
+        /** @var \Psr\Http\Message\ResponseInterface $response */
+        $result = $controller->workspaceUnShare($request, $response, []);
+
+        $this->assertEquals(200, $result->getStatusCode());
+
+        // Give MailHog time to receive the email
+        sleep(1);
+
+        $testData = [
+            'to' => 'user@example.com',
+            'subject' => 'You have been removed from Team Budget',
+            'string_to_check' => ['ha rimosso il tuo accesso al workspace', 'Team Budget', 'John Doe']
+        ];
+
+        $this->invokeMailhog($testData);
+    }
 }

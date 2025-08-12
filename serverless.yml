@@ -16,6 +16,7 @@ provider:
     MAIL_PASSWORD: ${env:MAIL_PASSWORD, ''}
     MAIL_ENCRYPTION: ${env:MAIL_ENCRYPTION, ''}
     MAIL_FROM_ADDRESS: ${env:MAIL_FROM_ADDRESS, ''}
+    APP_URL: ${env:APP_URL, 'https://app.budgetcontrol.cloud'}
   deploymentBucket:
     name: serverless-framework-deployments-eu-west-1-41d5edce-535f
 plugins:
