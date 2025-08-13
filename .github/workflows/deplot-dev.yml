@@ -55,12 +55,6 @@ jobs:
         DB_USERNAME: root
         DB_PASSWORD: root
         APP_KEY: testing
-        MAIL_DRIVER: mailhog
-        MAIL_HOST: 127.0.0.1
-        MAIL_PORT: 1025
-        MAIL_USERNAME: ""
-        MAIL_PASSWORD: ""
-        MAIL_ENCRYPTION: ""
         FIREBASE_SERVICE_ACCOUNT: "test"
       run: |
         vendor/bin/phinx migrate
@@ -75,6 +69,12 @@ jobs:
         DB_DATABASE: test_db
         DB_USERNAME: root
         DB_PASSWORD: root
+        MAIL_DRIVER: mailhog
+        MAIL_HOST: 127.0.0.1
+        MAIL_PORT: 1025
+        MAIL_USERNAME: ""
+        MAIL_PASSWORD: ""
+        MAIL_ENCRYPTION: ""
       run: vendor/bin/phpunit test
       
   deploy_job:
