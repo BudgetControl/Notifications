@@ -54,6 +54,7 @@ jobs:
         DB_DATABASE: test_db
         DB_USERNAME: root
         DB_PASSWORD: root
+        APP_KEY: testing
         MAIL_DRIVER: mailhog
         MAIL_HOST: 127.0.0.1
         MAIL_PORT: 1025
