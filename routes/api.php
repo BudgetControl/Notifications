@@ -1,4 +1,5 @@
 <?php
+
 /**
  *  application apps
  */
@@ -11,3 +12,6 @@
  $app->post('/notify/email/workspace/share', ['\BudgetControl\Notifications\Http\Controller\WorkspaceNotifyController','workspaceShare']);
 $app->post('/notify/email/workspace/un-share', ['\BudgetControl\Notifications\Http\Controller\WorkspaceNotifyController', 'workspaceUnShare']);
 
+$app->post('/notify/message/send', ['\BudgetControl\Notifications\Http\Controller\MessageNotifyController', 'sendNotification']);
+$app->post('/notify/message/send/{userUuid}', ['\BudgetControl\Notifications\Http\Controller\MessageNotifyController', 'sendNotificationToUser']);
+$app->post('/notify/save/token', ['\BudgetControl\Notifications\Http\Controller\MessageNotifyController', 'saveToken']);

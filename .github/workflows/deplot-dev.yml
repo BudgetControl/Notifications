@@ -21,6 +21,11 @@ jobs:
           POSTGRES_PASSWORD: root
         ports:
           - "5432:5432"
+      mailhog:
+        image: mailhog/mailhog:latest
+        ports:
+          - "1025:1025"
+          - "8025:8025"
 
     steps:
     - name: Checkout code
@@ -48,6 +53,12 @@ jobs:
         DB_DATABASE: test_db
         DB_USERNAME: root
         DB_PASSWORD: root
+        MAIL_DRIVER: mailhog
+        MAIL_HOST: 127.0.0.1
+        MAIL_PORT: 1025
+        MAIL_USERNAME: ""
+        MAIL_PASSWORD: ""
+        MAIL_ENCRYPTION: ""
       run: |
         vendor/bin/phinx migrate
         vendor/bin/phinx seed:run

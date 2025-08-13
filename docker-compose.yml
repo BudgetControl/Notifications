@@ -3,7 +3,7 @@ version: '2.2'
 services:
     bemodule:
       container_name: budgetcontrol-ms-notifications
-      image: mlabfactory/php8-apache:v1.2.3-xdebug
+      image: mlabfactory/php8-apache:v1.3-xdebug
       platform: linux/amd64
       volumes:
         - ./:/var/www/workdir
