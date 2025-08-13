@@ -36,7 +36,7 @@ class BudgetNotifyControllerTest extends BaseCase
 
         $testData = [
             'to' => 'user@example.com',
-            'subject' => 'Budget Exceeded Alert - Monthly Budget',
+            'subject' => 'Avviso Superamento Budget - Monthly Budget',
             'string_to_check' => ['udget impostato','1200', 'User Test']
         ];
 

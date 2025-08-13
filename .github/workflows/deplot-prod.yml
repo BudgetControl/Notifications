@@ -63,8 +63,8 @@ jobs:
         FIREBASE_SERVICE_ACCOUNT: "test"
       run: |
         vendor/bin/phinx migrate
-        vendor/bin/phinx seed:run --class=MainSeeds
-        vendor/bin/phinx seed:run --class=FcmTokenSeed
+        vendor/bin/phinx seed:run --seed=MainSeeds
+        vendor/bin/phinx seed:run --seed=FcmTokenSeed
 
     - name: Run PHPUnit tests
       env:

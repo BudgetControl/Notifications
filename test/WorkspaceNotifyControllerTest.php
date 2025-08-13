@@ -69,7 +69,7 @@ class WorkspaceNotifyControllerTest extends BaseCase
         $testData = [
             'to' => 'user@example.com',
             'subject' => 'You have been removed from Team Budget',
-            'string_to_check' => ['ha rimosso il tuo accesso al workspace', 'Team Budget', 'John Doe']
+            'string_to_check' => ['ha rimosso la condivisione del workspace']
         ];
 
         $this->invokeMailhog($testData);

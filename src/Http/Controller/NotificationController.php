@@ -28,10 +28,8 @@ class NotificationController extends Controller {
         $view->setUserEmail($to);
         $view->setUserName($username);
 
-        try {
-        Mailer::send($to, $subject, $view);
-        } catch (\Exception $e) {
-            return response(['error' => 'Failed to send email: ' . $e->getMessage()], 500);
+        if (!$this->sendMail($to, $subject, $view, 'SendEmail')) {
+            return response(['error' => 'Failed to send email'], 500);
         }
 
         return response(['message' => 'Email sent successfully'], 200);

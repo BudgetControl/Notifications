@@ -33,10 +33,8 @@ class WorkspaceNotifyController extends Controller {
         $view->setUserName($username);
         $view->setDashboardUrl(env('APP_URL', 'https://app.budgetcontrol.cloud') . '/dashboard');
 
-        try {
-            Mailer::send($to, $subject, $view);
-        } catch (\Exception $e) {
-            return response(['error' => 'Failed to send workspace share notification: ' . $e->getMessage()], 500);
+        if (!$this->sendMail($to, $subject, $view, 'WorkspaceShare')) {
+            return response(['error' => 'Failed to send workspace share notification'], 500);
         }
 
         return response(['message' => 'Workspace share notification sent successfully'], 200);
@@ -62,10 +60,8 @@ class WorkspaceNotifyController extends Controller {
         $view->setUserEmail($to);
         $view->setUserName($username);
 
-        try {
-            Mailer::send($to, $subject, $view);
-        } catch (\Exception $e) {
-            return response(['error' => 'Failed to send workspace unshare notification: ' . $e->getMessage()], 500);
+        if (!$this->sendMail($to, $subject, $view, 'WorkspaceUnShare')) {
+            return response(['error' => 'Failed to send workspace unshare notification'], 500);
         }
 
         return response(['message' => 'Workspace unshare notification sent successfully'], 200);
