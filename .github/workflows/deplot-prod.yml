@@ -59,6 +59,7 @@ jobs:
         MAIL_USERNAME: ""
         MAIL_PASSWORD: ""
         MAIL_ENCRYPTION: ""
+        FIREBASE_SERVICE_ACCOUNT: "test"
       run: |
         vendor/bin/phinx migrate
         vendor/bin/phinx seed:run
