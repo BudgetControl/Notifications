@@ -57,6 +57,7 @@ jobs:
         FIREBASE_SERVICE_ACCOUNT: "test"
         APP_KEY: testing
       run: |
+        export APP_KEY=testing
         vendor/bin/phinx migrate
         vendor/bin/phinx seed:run --seed=MainSeeds
         vendor/bin/phinx seed:run --seed=FcmTokenSeed
