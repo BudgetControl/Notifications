@@ -5,6 +5,7 @@ use BudgetControl\Notifications\Facade\Mailer;
 use BudgetControl\Notifications\Http\Controller\Controller;
 use BudgetcontrolLibs\Mailer\View\RecoveryPasswordView;
 use BudgetcontrolLibs\Mailer\View\SignUpView;
+use Illuminate\Support\Facades\Log;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -28,10 +29,8 @@ class AuthNotifyController extends Controller {
         $view->setUserName($username);
         $view->setUserEmail($to);
 
-        try {
-            Mailer::send($to, $subject, $view);
-        } catch (\Exception $e) {
-            return response(['error' => 'Failed to send recovery email: ' . $e->getMessage()], 500);
+        if (!$this->sendMail($to, $subject, $view, 'RecoveryPassword')) {
+            return response(['error' => 'Failed to send recovery email'], 500);
         }
 
         return response(['message' => 'Password recovery email sent successfully'], 200);
@@ -55,10 +54,8 @@ class AuthNotifyController extends Controller {
         $view->setUserEmail($to);
         $view->setConfirmLink($confirmationUrl);
 
-        try {
-            Mailer::send($to, $subject, $view);
-        } catch (\Exception $e) {
-            return response(['error' => 'Failed to send sign-up confirmation email: ' . $e->getMessage()], 500);
+        if (!$this->sendMail($to, $subject, $view, 'SignUp')) {
+            return response(['error' => 'Failed to send sign-up confirmation email'], 500);
         }
 
         return response(['message' => 'Sign-up confirmation email sent successfully'], 200);

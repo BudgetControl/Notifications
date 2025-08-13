@@ -14,6 +14,6 @@ class Mailer extends \Illuminate\Support\Facades\Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'mailer'; // This should match the key used in the Facade application setup
+        return 'mailer';
     }
 }

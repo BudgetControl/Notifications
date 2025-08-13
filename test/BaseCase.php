@@ -2,6 +2,8 @@
 
 namespace BudgetControl\Test;
 
+use Illuminate\Support\Facades\Facade;
+
 
 class BaseCase extends \PHPUnit\Framework\TestCase
 {
@@ -13,10 +15,28 @@ class BaseCase extends \PHPUnit\Framework\TestCase
         ini_set('display_errors', '1');
     }
 
+    protected function setup(): void
+    {
+        // Recupera l'applicazione Facade già configurata
+        $app = Facade::getFacadeApplication() ?? [];
+
+        // Sovrascrivi solo la facade 'firebase'
+        $app['firebase'] = new class {
+            public function sendNotification(array $tokens, string $title, string $body)
+            {
+                // Mock implementation for testing
+                return true;
+            }
+        };
+
+        // Reimposta l'applicazione Facade con la nuova configurazione
+        Facade::setFacadeApplication($app);
+    }
+
     public function invokeMailhog($testData) : void {
 
         $client = new \GuzzleHttp\Client();
-        $mailhogResponse = $client->request('GET', 'http://localhost:8025/api/v2/messages', [
+        $mailhogResponse = $client->request('GET', 'http://'.env('MAIL_HOST').':8025/api/v2/messages', [
             'query' => [
                 'limit' => 10
             ]

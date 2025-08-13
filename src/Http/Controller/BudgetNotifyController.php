@@ -37,10 +37,8 @@ class BudgetNotifyController extends Controller {
         $view->setTotalRemaining((float) $budgetLimit - (float) $currentAmount);
         $view->setBudgetAmount((float) $budgetLimit);
 
-        try {
-            Mailer::send($to, $subject, $view);
-        } catch (\Exception $e) {
-            return response(['error' => 'Failed to send budget exceeded notification: ' . $e->getMessage()], 500);
+        if (!$this->sendMail($to, $subject, $view, 'BudgetExceeded')) {
+            return response(['error' => 'Failed to send budget exceeded notification'], 500);
         }
 
         return response(['message' => 'Budget exceeded notification sent successfully'], 200);

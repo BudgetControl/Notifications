@@ -1,16 +1,19 @@
 <?php
+
 /**
  * This file is a helper file that contains various functions.
  */
 
-if(!function_exists('config')) {
-    function confing(string $key, string $value): string {
+if (!function_exists('config')) {
+    function confing(string $key, string $value): string
+    {
         return $_ENV[$key] ?? $value;
     }
 }
 
-if(!function_exists('response')) {
-    function response(array $dataResponse, int $statusCode = 200, array $headers=[]): \Psr\Http\Message\ResponseInterface {
+if (!function_exists('response')) {
+    function response(array $dataResponse, int $statusCode = 200, array $headers = []): \Psr\Http\Message\ResponseInterface
+    {
         $response = new \Slim\Psr7\Response();
 
         $jsonData = json_encode($dataResponse);
@@ -19,14 +22,29 @@ if(!function_exists('response')) {
             $errorResponse->getBody()->write('Errore nella codifica JSON dei dati');
             return $errorResponse->withStatus(500);
         }
-        
+
         $response->getBody()->write($jsonData);
 
         foreach ($headers as $key => $value) {
             $response = $response->withHeader($key, $value);
         }
-        
+
         return $response->withHeader('Content-Type', 'application/json')->withStatus($statusCode);
+    }
+}
+
+if (!function_exists('platform')) {
+    function platform(string $userAgent): string
+    {
+        if (stripos($userAgent, 'Android') !== false) {
+            return 'android';
+        } elseif (stripos($userAgent, 'iPhone') !== false || stripos($userAgent, 'iPad') !== false || stripos($userAgent, 'iOS') !== false) {
+            return 'ios';
+        } elseif (stripos($userAgent, 'Windows') !== false || stripos($userAgent, 'Macintosh') !== false || stripos($userAgent, 'Linux') !== false) {
+            return 'web';
+        } else {
+            return 'unknown';
+        }
     }
 }
 

@@ -37,3 +37,6 @@ public_html/hot
 .env.local
 .serverless/*
 .phpunit.cache/*
+.env.*
+.serverless/*
+config/budgetcontrol-d1201-firebase-adminsdk-fbsvc-926e5c10c5.json
