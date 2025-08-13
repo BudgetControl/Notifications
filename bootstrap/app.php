@@ -11,6 +11,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
+$_ENV['APP_KEY'] = env('APP_KEY', 'testing');
+
 // Crea un'istanza del gestore del database (Capsule)
 $capsule = new \Illuminate\Database\Capsule\Manager();
 
