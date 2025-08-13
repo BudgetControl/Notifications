@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f3c4fa01e41b73da20fccfb68ffdd6fe",
+    "content-hash": "d6c230863811696f0b64f650799e12af",
     "packages": [
         {
             "name": "beste/clock",
@@ -431,16 +431,16 @@
         },
         {
             "name": "budgetcontrol/mailer",
-            "version": "v1.0.2",
+            "version": "v1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/BudgetControl/MailerService.git",
-                "reference": "c38c9ad062ced65e1cd5a76c072412b03e7fb3a7"
+                "reference": "8321f63113b23c6f220e4815a251431d255e88c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BudgetControl/MailerService/zipball/c38c9ad062ced65e1cd5a76c072412b03e7fb3a7",
-                "reference": "c38c9ad062ced65e1cd5a76c072412b03e7fb3a7",
+                "url": "https://api.github.com/repos/BudgetControl/MailerService/zipball/8321f63113b23c6f220e4815a251431d255e88c8",
+                "reference": "8321f63113b23c6f220e4815a251431d255e88c8",
                 "shasum": ""
             },
             "require": {
@@ -471,9 +471,9 @@
             ],
             "description": "The MailerService library provides functionality for sending emails. It is used by the BC (Business Communication) module of the application.",
             "support": {
-                "source": "https://github.com/BudgetControl/MailerService/tree/v1.0.2"
+                "source": "https://github.com/BudgetControl/MailerService/tree/v1.2"
             },
-            "time": "2025-07-16T10:47:23+00:00"
+            "time": "2025-08-08T15:47:05+00:00"
         },
         {
             "name": "cakephp/chronos",
@@ -7867,6 +7867,81 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "budgetcontrol/schema-registry-service",
+            "version": "v1.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BudgetControl/Schema-Registry-Service.git",
+                "reference": "519464855e04c82a70f621e318b6d5f53a7879ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BudgetControl/Schema-Registry-Service/zipball/519464855e04c82a70f621e318b6d5f53a7879ec",
+                "reference": "519464855e04c82a70f621e318b6d5f53a7879ec",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Budgetcontrol\\Registry\\": "libs/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Marco De Felice",
+                    "email": "marco.defelice@mlabfactory.it"
+                }
+            ],
+            "description": "An API Schema Registry is a centralized service that manages and distributes database schema definitions",
+            "support": {
+                "source": "https://github.com/BudgetControl/Schema-Registry-Service/tree/v1.5.1",
+                "issues": "https://github.com/BudgetControl/Schema-Registry-Service/issues"
+            },
+            "time": "2025-08-11T13:03:17+00:00"
+        },
+        {
+            "name": "budgetcontrol/seeds",
+            "version": "v0.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BudgetControl/SeedsTestLibs.git",
+                "reference": "931b87654744647fa92d72c05d6aacf960b36d3b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BudgetControl/SeedsTestLibs/zipball/931b87654744647fa92d72c05d6aacf960b36d3b",
+                "reference": "931b87654744647fa92d72c05d6aacf960b36d3b",
+                "shasum": ""
+            },
+            "require": {
+                "budgetcontrol/library": "^1.2"
+            },
+            "require-dev": {
+                "ramsey/uuid": "^4.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Budgetcontrol\\Seeds\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco De Felice",
+                    "email": "marco.defelice@mlabfactory.it"
+                }
+            ],
+            "description": "Seeds and migrations for unit test",
+            "support": {
+                "source": "https://github.com/BudgetControl/SeedsTestLibs/tree/v0.3.2",
+                "issues": "https://github.com/BudgetControl/SeedsTestLibs/issues"
+            },
+            "time": "2025-08-11T12:13:55+00:00"
+        },
         {
             "name": "fakerphp/faker",
             "version": "v1.24.1",
