@@ -64,7 +64,7 @@ class MessageNotifyController extends Controller
         $tokens = $this->fcmTokenRepository->getTokensByUserId($user);
         if (empty($tokens)) {
             Log::info('No tokens found for user');
-            return response(['error' => 'No tokens found for user'], 400);
+            return response(['error' => 'No tokens found for user'], 204);
         }
 
         try {
@@ -103,7 +103,7 @@ class MessageNotifyController extends Controller
 
         if (empty($userTokens)) {
             Log::info('No tokens found for user');
-            return response(['error' => 'No tokens found for user'], 400);
+            return response(['error' => 'No tokens found for user'], 204);
         }
 
         try {
